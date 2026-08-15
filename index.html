@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پنجه‌یار | راهنمای جامع حیوانات خانگی</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=Nunito:ital,wght@0,600;0,700;0,800;1,700&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FCF5EC; --bg-card:#FFFFFF; --bg-soft:#FBEDE3;
+  --ink:#3A2E27; --ink-dim:#8A7A6C;
+  --coral:#E4527A; --coral-soft:#FCE4EA;
+  --teal:#2F9E8F; --teal-soft:#E1F3F0; --teal-ink:#1F6E63;
+  --mustard:#E0972E; --mustard-soft:#FBEEDA; --mustard-ink:#8A5A16;
+  --danger:#D14343; --danger-soft:#FBE3E1; --danger-ink:#9A2F2F;
+  --line:rgba(58,46,39,0.10);
+  --shadow:0 10px 26px rgba(58,46,39,0.08);
+}
+[data-theme="dark"]{
+  --bg:#201814; --bg-card:#2B2119; --bg-soft:#382B22;
+  --ink:#F2E8DC; --ink-dim:#B7A797;
+  --coral:#F17590; --coral-soft:rgba(244,103,138,0.16);
+  --teal:#4DBBAB; --teal-soft:rgba(77,187,171,0.14); --teal-ink:#8FE0D2;
+  --mustard:#F0AA48; --mustard-soft:rgba(240,170,72,0.14); --mustard-ink:#F6C978;
+  --danger:#E4746B; --danger-soft:rgba(228,116,107,0.16); --danger-ink:#F3ADA6;
+  --line:rgba(255,255,255,0.10);
+  --shadow:0 10px 26px rgba(0,0,0,0.35);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{background:var(--bg); color:var(--ink); font-family:'Vazirmatn',sans-serif; line-height:1.85; transition:background-color .25s,color .25s;}
+::selection{background:var(--coral); color:#fff;}
+h1,h2,h3,.display{font-family:'Baloo Bhaijaan 2','Vazirmatn',sans-serif; font-weight:700;}
+:lang(en) h1,:lang(en) h2,:lang(en) h3,:lang(en) .display{font-family:'Nunito','Vazirmatn',sans-serif; font-weight:800;}
+a{color:inherit;} button{font-family:inherit;}
+svg.ic{width:18px; height:18px; flex-shrink:0; stroke:currentColor;}
+svg.ic path,svg.ic circle{stroke:currentColor;}
+
+.shell{display:flex; min-height:100vh;}
+.sidebar{width:238px; flex-shrink:0; background:var(--bg-card); border-inline-end:1px solid var(--line); padding:26px 18px; position:sticky; top:0; height:100vh; overflow-y:auto; z-index:50;}
+.sb-brand{display:flex; align-items:center; gap:10px; font-size:22px; margin-bottom:18px; padding:0 6px;}
+.sb-controls{display:flex; gap:8px; margin-bottom:22px; padding:0 6px;}
+.iconbtn{display:flex; align-items:center; gap:6px; background:var(--bg-soft); border:1px solid var(--line); color:var(--ink-dim); padding:7px 12px; border-radius:999px; font-size:12.5px; cursor:pointer; transition:all .15s; font-family:'Vazirmatn';}
+.iconbtn:hover{border-color:var(--coral); color:var(--ink);}
+.sb-nav{display:flex; flex-direction:column; gap:4px;}
+.sb-item{display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:14px; cursor:pointer; font-size:14.5px; color:var(--ink-dim); transition:all .15s; border:1px solid transparent;}
+.sb-item svg.ic{width:19px; height:19px;}
+.sb-item:hover{background:var(--bg-soft); color:var(--ink);}
+.sb-item.active{background:var(--coral); color:#fff; font-weight:700; box-shadow:var(--shadow);}
+.sb-note{margin-top:24px; padding:14px 16px; background:var(--teal-soft); border-radius:14px; font-size:12px; color:var(--teal-ink); line-height:1.7;}
+
+.bottombar{display:none;}
+@media(max-width:860px){
+  .sidebar{display:none;}
+  .bottombar{display:flex; position:fixed; bottom:0; inset-inline:0; background:var(--bg-card); border-top:1px solid var(--line); z-index:60; padding:6px 2px; justify-content:space-around; box-shadow:0 -6px 20px rgba(58,46,39,0.08);}
+  .bb-item{display:flex; flex-direction:column; align-items:center; gap:2px; padding:6px 4px; border:none; background:none; cursor:pointer; color:var(--ink-dim); font-size:10px; flex:1;}
+  .bb-item svg.ic{width:19px; height:19px;}
+  .bb-item.active{color:var(--coral); font-weight:700;}
+  .main{padding-bottom:70px;}
+  .mobile-controls{display:flex; gap:8px; position:fixed; top:14px; inset-inline-end:14px; z-index:70;}
+}
+.mobile-controls{display:none;}
+
+.main{flex:1; min-width:0;}
+.wrap{max-width:900px; margin:0 auto; padding:0 26px;}
+.panel{display:none; padding:46px 0 70px; animation:fadein .3s ease;}
+.panel.active{display:block;}
+@keyframes fadein{from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);}}
+
+.hero-badge{display:inline-flex; align-items:center; gap:8px; background:var(--coral-soft); color:var(--coral); font-size:13px; font-weight:700; padding:7px 16px; border-radius:999px; margin-bottom:20px;}
+h1.hero-title{font-size:36px; margin:0 0 14px; max-width:600px; line-height:1.45;}
+h1.hero-title span{color:var(--coral);}
+.lede{font-size:15.5px; color:var(--ink-dim); max-width:520px; margin:0 0 26px;}
+.paws{width:100%; height:60px; margin:6px 0 26px;}
+.paws .p{opacity:0; transform:scale(.4); animation:pawstep .5s cubic-bezier(.34,1.56,.64,1) forwards;}
+@keyframes pawstep{to{opacity:1; transform:scale(1);}}
+
+.feature-card{display:flex; align-items:center; gap:20px; background:linear-gradient(135deg, var(--coral), #C93F68); color:#fff; border-radius:20px; padding:22px 26px; margin:0 0 26px; cursor:pointer; transition:transform .15s ease; box-shadow:var(--shadow);}
+.feature-card:hover{transform:translateY(-2px);}
+.feature-card .fic{width:52px; height:52px; border-radius:14px; background:rgba(255,255,255,0.18); display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+.feature-card .fic svg{width:28px; height:28px; color:#fff;}
+.feature-card .ft{font-size:17px; font-weight:800;}
+.feature-card .fd{font-size:12.5px; opacity:.9; margin-top:3px;}
+.feature-card .farrow{margin-inline-start:auto; font-size:20px; flex-shrink:0;}
+
+.bento{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:6px;}
+.bento .tile{border-radius:20px; padding:20px 20px; cursor:pointer; transition:transform .15s ease; box-shadow:var(--shadow); border:1px solid var(--line); background:var(--bg-card);}
+.bento .tile:hover{transform:translateY(-3px);}
+.tile.wide{grid-column:span 2;}
+.tile svg.ic{width:24px; height:24px; color:var(--coral);}
+.tile .t{font-weight:800; font-size:15.5px; margin-top:10px;}
+.tile .d{font-size:12px; margin-top:4px; color:var(--ink-dim);}
+@media(max-width:760px){.bento{grid-template-columns:repeat(2,1fr);} .tile.wide{grid-column:span 2;}}
+
+.tip-strip{display:flex; align-items:center; gap:12px; background:var(--mustard-soft); border-radius:16px; padding:14px 20px; margin:24px 0 4px; font-size:13.5px; color:var(--mustard-ink);}
+.tip-strip svg.ic{width:18px; height:18px;}
+.tip-strip b{color:var(--mustard-ink);}
+
+h2.ptitle{font-size:24px; margin:0 0 6px;}
+p.psub{color:var(--ink-dim); font-size:14px; margin:0 0 26px;}
+.card{background:var(--bg-card); border:1px solid var(--line); border-radius:18px; padding:22px 24px; box-shadow:var(--shadow);}
+.tool-title{display:flex; align-items:center; gap:10px; font-size:16px; font-weight:800; margin:0 0 6px;}
+.tool-desc{color:var(--ink-dim); font-size:13.5px; margin:0 0 16px;}
+.btn{display:inline-block; background:var(--coral); color:#fff; font-weight:700; border:none; padding:12px 24px; border-radius:12px; cursor:pointer; font-size:14px; transition:transform .15s; font-family:'Vazirmatn';}
+.btn:hover{transform:translateY(-2px);}
+.btn.ghost{background:var(--bg-soft); color:var(--ink);}
+
+.disclaimer{background:var(--danger-soft); color:var(--danger-ink); border-radius:14px; padding:12px 16px; font-size:12.5px; margin-bottom:20px;}
+.symptom-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-bottom:18px;}
+@media(max-width:600px){.symptom-grid{grid-template-columns:1fr;}}
+.symptom{display:flex; align-items:center; gap:10px; background:var(--bg-soft); border:1px solid var(--line); border-radius:13px; padding:11px 14px; cursor:pointer; font-size:13.5px; transition:all .15s;}
+.symptom.on{background:var(--coral); color:#fff; border-color:var(--coral);}
+.symptom .box{width:16px; height:16px; border:1.5px solid var(--ink-dim); border-radius:5px; flex-shrink:0;}
+.symptom.on .box{border-color:#fff; background:#fff;}
+.diag-result{margin-top:18px; display:none;}
+.diag-result.show{display:block;}
+.diag-item{border-inline-start:4px solid var(--teal); background:var(--teal-soft); border-radius:0 14px 14px 0; padding:14px 18px; margin-bottom:10px;}
+.diag-item b{color:var(--teal-ink);}
+.diag-item p{margin:6px 0 0; font-size:13px; color:var(--ink);}
+
+.species-toggle{display:flex; gap:8px; margin-bottom:22px;}
+.spbtn{background:var(--bg-card); border:1px solid var(--line); color:var(--ink-dim); padding:9px 18px; border-radius:999px; cursor:pointer; font-size:13.5px; font-weight:600;}
+.spbtn.active{background:var(--coral); color:#fff; border-color:var(--coral);}
+.breed-grid{display:grid; grid-template-columns:1fr; gap:14px;}
+.breed{background:var(--bg-card); border:1px solid var(--line); border-radius:18px; overflow:hidden; box-shadow:var(--shadow);}
+.breed-head{display:flex; align-items:center; gap:16px; padding:18px 22px; cursor:pointer;}
+.breed-ic{width:52px; height:52px; border-radius:14px; background:var(--coral-soft); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:24px;}
+.breed-name{font-size:16.5px; font-weight:800;}
+.breed-tags{font-size:11.5px; color:var(--ink-dim); margin-top:3px;}
+.breed-chevron{margin-inline-start:auto; color:var(--ink-dim); transition:transform .2s;}
+.breed.open .breed-chevron{transform:rotate(180deg);}
+.breed-body{max-height:0; overflow:hidden; transition:max-height .4s ease;}
+.breed-body-inner{padding:0 22px 24px; border-top:1px solid var(--line);}
+.meta-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:18px 0;}
+@media(max-width:600px){.meta-grid{grid-template-columns:1fr 1fr;}}
+.meta-item{background:var(--bg-soft); border-radius:12px; padding:10px 12px;}
+.meta-item .lab{font-size:11px; color:var(--ink-dim);}
+.meta-item .val{font-size:12.5px; margin-top:3px; font-weight:700;}
+.prob-list{display:flex; flex-direction:column; gap:8px;}
+.prob-item{background:var(--bg-soft); border-radius:10px; padding:10px 14px; font-size:12.5px;}
+.prob-item b{color:var(--coral); display:block; margin-bottom:3px; font-size:13px;}
+.prob-item span{color:var(--ink-dim);}
+
+.qcard{background:var(--bg-card); border:1px solid var(--line); border-radius:16px; padding:20px 22px; margin-bottom:14px; box-shadow:var(--shadow);}
+.qcard p.qtext{font-weight:700; margin:0 0 14px; font-size:14.5px;}
+.opts{display:flex; flex-direction:column; gap:9px;}
+.opt{background:var(--bg-soft); border:1px solid var(--line); border-radius:12px; padding:11px 15px; cursor:pointer; font-size:14px; color:var(--ink-dim); transition:all .15s; text-align:start;}
+.opt:hover{border-color:var(--coral); color:var(--ink);}
+.opt.correct{border-color:var(--teal); background:var(--teal-soft); color:var(--ink);}
+.opt.wrong{border-color:var(--danger); background:var(--danger-soft); color:var(--ink);}
+.opt.disabled{pointer-events:none;}
+.quiz-score{margin-top:6px; font-size:13.5px; color:var(--ink-dim);}
+.result-plan{margin-top:22px; display:none;}
+.result-plan.show{display:block;}
+.result-head{display:flex; align-items:center; gap:16px; margin-bottom:20px;}
+.result-head .pname{font-size:18px; font-weight:800;}
+
+/* HAMDAM-YAB wizard */
+.match-shell{max-width:600px;}
+.match-progress{display:flex; gap:6px; margin-bottom:26px;}
+.match-dot{height:5px; flex:1; border-radius:99px; background:var(--line); overflow:hidden;}
+.match-dot .fill{display:none; height:100%; background:var(--coral); width:100%;}
+.match-dot.done .fill, .match-dot.active .fill{display:block;}
+.match-step{transition:opacity .3s ease, transform .3s ease;}
+.match-step.leaving{opacity:0; transform:translateY(-8px);}
+.match-qtext{font-size:19px; font-weight:800; margin:0 0 18px;}
+.match-opts{display:flex; flex-direction:column; gap:10px;}
+.match-opt{background:var(--bg-card); border:1px solid var(--line); border-radius:14px; padding:16px 18px; cursor:pointer; font-size:14.5px; transition:all .15s; text-align:start; box-shadow:var(--shadow);}
+.match-opt:hover{border-color:var(--coral); transform:translateY(-1px);}
+.match-back{margin-top:16px; background:none; border:none; color:var(--ink-dim); cursor:pointer; font-size:13px; font-family:inherit; display:flex; align-items:center; gap:6px;}
+.match-back:hover{color:var(--ink);}
+.match-results h3{font-size:15px; margin:26px 0 12px; display:flex; align-items:center; gap:8px;}
+.match-results h3:first-child{margin-top:0;}
+.match-results h3.best{color:var(--teal-ink);}
+.match-results h3.good{color:var(--mustard-ink);}
+.match-results h3.no{color:var(--danger-ink);}
+.match-breed{background:var(--bg-card); border:1px solid var(--line); border-radius:14px; padding:16px 18px; margin-bottom:10px; box-shadow:var(--shadow);}
+.match-breed .mp-head{display:flex; align-items:center; gap:12px; margin-bottom:8px;}
+.match-breed .mp-icon{width:40px; height:40px; border-radius:11px; background:var(--coral-soft); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:20px;}
+.match-breed .mp-name{font-weight:800; font-size:15px;}
+.match-reasons{display:flex; flex-direction:column; gap:4px; font-size:12.5px;}
+.match-reasons .yes{color:var(--teal-ink);}
+.match-reasons .no{color:var(--danger-ink);}
+.match-empty{color:var(--ink-dim); font-size:13px;}
+
+.calc-row{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:16px;}
+@media(max-width:640px){.calc-row{grid-template-columns:1fr;}}
+.field label{display:block; font-size:13px; color:var(--ink-dim); margin-bottom:6px;}
+select,input[type=number]{width:100%; background:var(--bg-soft); border:1px solid var(--line); color:var(--ink); padding:10px 12px; border-radius:10px; font-family:'Vazirmatn'; font-size:14px;}
+.calc-result{margin-top:16px; display:none; align-items:center; gap:12px; background:var(--teal-soft); border-radius:14px; padding:16px 18px;}
+.calc-result.show{display:flex;}
+.calc-result .num{font-size:24px; font-weight:800; color:var(--teal-ink); font-family:'Baloo Bhaijaan 2';}
+.calc-note{font-size:11.5px; color:var(--ink-dim); margin-top:8px;}
+
+.em-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:10px;}
+@media(max-width:600px){.em-grid{grid-template-columns:1fr;}}
+.em-btn{background:var(--bg-card); border:1px solid var(--line); border-radius:14px; padding:14px 16px; cursor:pointer; font-size:13.5px; text-align:start; transition:border-color .15s; box-shadow:var(--shadow);}
+.em-btn:hover{border-color:var(--danger);}
+.em-answer{display:none; margin-top:14px; border-inline-start:4px solid var(--danger); background:var(--danger-soft); border-radius:0 14px 14px 0; padding:14px 18px; font-size:13.5px; color:var(--ink);}
+.em-answer.show{display:block;}
+
+.buy-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px;}
+@media(max-width:600px){.buy-grid{grid-template-columns:1fr;}}
+.buy-card{background:var(--bg-card); border:1px solid var(--line); border-radius:16px; padding:18px 20px; box-shadow:var(--shadow);}
+.buy-card h4{margin:0 0 8px; font-size:14.5px; font-weight:800; color:var(--coral);}
+.buy-card p{margin:0; font-size:13.5px; color:var(--ink-dim);}
+
+footer{padding:30px 26px; text-align:center; color:var(--ink-dim); font-size:12.5px;}
+button:focus-visible,.opt:focus-visible,.symptom:focus-visible,.em-btn:focus-visible,.sb-item:focus-visible,.match-opt:focus-visible{outline:2px solid var(--coral); outline-offset:2px;}
+@media(max-width:640px){h1.hero-title{font-size:28px;} .meta-grid{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+
+<div class="mobile-controls">
+  <button class="iconbtn" id="langBtnM" onclick="toggleLang()">EN</button>
+  <button class="iconbtn" id="themeBtnM" onclick="toggleTheme()">🌙</button>
+</div>
+
+<div class="shell">
+  <aside class="sidebar">
+    <div class="sb-brand">🐾 <span id="brandText">پنجه‌یار</span></div>
+    <div class="sb-controls">
+      <button class="iconbtn" id="langBtn" onclick="toggleLang()">EN</button>
+      <button class="iconbtn" id="themeBtn" onclick="toggleTheme()">🌙</button>
+    </div>
+    <nav class="sb-nav" id="sbNav"></nav>
+    <div class="sb-note" id="sbNote"></div>
+  </aside>
+
+  <main class="main">
+    <div class="wrap">
+
+      <section class="panel active" id="tab-home">
+        <div class="hero-badge" id="heroBadge"></div>
+        <h1 class="hero-title" id="heroTitle"></h1>
+        <p class="lede" id="heroLede"></p>
+        <svg class="paws" viewBox="0 0 900 60" preserveAspectRatio="xMinYMid meet">
+          <g class="p" style="animation-delay:.1s" transform="translate(40,38) rotate(-8)"><ellipse cx="0" cy="0" rx="10" ry="8" fill="#E4527A"/><circle cx="-9" cy="-11" r="3.4" fill="#E4527A"/><circle cx="0" cy="-14" r="3.4" fill="#E4527A"/><circle cx="9" cy="-11" r="3.4" fill="#E4527A"/></g>
+          <g class="p" style="animation-delay:.35s" transform="translate(190,14) rotate(6)"><ellipse cx="0" cy="0" rx="10" ry="8" fill="#2F9E8F"/><circle cx="-9" cy="-11" r="3.4" fill="#2F9E8F"/><circle cx="0" cy="-14" r="3.4" fill="#2F9E8F"/><circle cx="9" cy="-11" r="3.4" fill="#2F9E8F"/></g>
+          <g class="p" style="animation-delay:.6s" transform="translate(340,40) rotate(-10)"><ellipse cx="0" cy="0" rx="10" ry="8" fill="#E0972E"/><circle cx="-9" cy="-11" r="3.4" fill="#E0972E"/><circle cx="0" cy="-14" r="3.4" fill="#E0972E"/><circle cx="9" cy="-11" r="3.4" fill="#E0972E"/></g>
+          <g class="p" style="animation-delay:.85s" transform="translate(490,12) rotate(5)"><ellipse cx="0" cy="0" rx="10" ry="8" fill="#E4527A"/><circle cx="-9" cy="-11" r="3.4" fill="#E4527A"/><circle cx="0" cy="-14" r="3.4" fill="#E4527A"/><circle cx="9" cy="-11" r="3.4" fill="#E4527A"/></g>
+          <g class="p" style="animation-delay:1.1s" transform="translate(640,40) rotate(-8)"><ellipse cx="0" cy="0" rx="10" ry="8" fill="#2F9E8F"/><circle cx="-9" cy="-11" r="3.4" fill="#2F9E8F"/><circle cx="0" cy="-14" r="3.4" fill="#2F9E8F"/><circle cx="9" cy="-11" r="3.4" fill="#2F9E8F"/></g>
+          <g class="p" style="animation-delay:1.35s" transform="translate(790,14) rotate(6)"><ellipse cx="0" cy="0" rx="10" ry="8" fill="#E0972E"/><circle cx="-9" cy="-11" r="3.4" fill="#E0972E"/><circle cx="0" cy="-14" r="3.4" fill="#E0972E"/><circle cx="9" cy="-11" r="3.4" fill="#E0972E"/></g>
+        </svg>
+
+        <div class="feature-card" onclick="switchTab('match')">
+          <div class="fic"></div>
+          <div><div class="ft" id="featTitle"></div><div class="fd" id="featDesc"></div></div>
+          <div class="farrow">‹</div>
+        </div>
+
+        <div class="bento" id="bento"></div>
+        <div class="tip-strip"><span id="tipIc"></span><span><b id="tipLabel"></b> <span id="dailyTip"></span></span></div>
+      </section>
+
+      <section class="panel" id="tab-diagnose">
+        <h2 class="ptitle" id="diagTitle"></h2>
+        <p class="psub" id="diagSub"></p>
+        <div class="disclaimer" id="diagDisclaimer"></div>
+        <div class="card">
+          <div class="symptom-grid" id="symptomGrid"></div>
+          <button class="btn" id="diagBtn" onclick="diagnose()"></button>
+          <button class="btn ghost" id="resetBtn" onclick="resetDiag()" style="margin-inline-start:8px;"></button>
+          <div class="diag-result" id="diagResult"></div>
+        </div>
+      </section>
+
+      <section class="panel" id="tab-breeds">
+        <h2 class="ptitle" id="breedsTitle"></h2>
+        <p class="psub" id="breedsSub"></p>
+        <div class="species-toggle">
+          <button class="spbtn active" data-sp="all" id="spAll"></button>
+          <button class="spbtn" data-sp="dog" id="spDog"></button>
+          <button class="spbtn" data-sp="cat" id="spCat"></button>
+        </div>
+        <div class="breed-grid" id="breedList"></div>
+      </section>
+
+      <!-- رفیق‌یاب / Buddy Finder -->
+      <section class="panel" id="tab-match">
+        <h2 class="ptitle" id="matchTitle"></h2>
+        <p class="psub" id="matchSub"></p>
+        <div class="match-shell">
+          <div class="match-progress" id="matchProgress"></div>
+          <div id="matchWizard"></div>
+          <div class="match-results" id="matchResults" style="display:none;"></div>
+        </div>
+      </section>
+
+      <section class="panel" id="tab-quiz">
+        <h2 class="ptitle" id="quizTitle"></h2>
+        <p class="psub" id="quizSub"></p>
+        <div id="quizBox"></div>
+        <p class="quiz-score" id="quizScoreLine"></p>
+        <div class="result-plan" id="generalResult"></div>
+      </section>
+
+      <section class="panel" id="tab-tools">
+        <h2 class="ptitle" id="toolsTitle"></h2>
+        <p class="psub" id="toolsSub"></p>
+        <div class="tool-title" id="calcTitle"></div>
+        <div class="card">
+          <div class="calc-row">
+            <div class="field"><label id="calcL1"></label><select id="calcSpecies"><option value="dog" id="opt-dog"></option><option value="cat" id="opt-cat"></option></select></div>
+            <div class="field"><label id="calcL2"></label><input type="number" id="calcWeight" min="0.5" step="0.5" value="10"></div>
+            <div class="field"><label id="calcL3"></label>
+              <select id="calcActivity"><option value="low" id="opt-low"></option><option value="med" id="opt-med"></option><option value="high" id="opt-high"></option></select>
+            </div>
+          </div>
+          <button class="btn" id="calcBtn" onclick="calcFood()"></button>
+          <div class="calc-result" id="calcResult"></div>
+          <p class="calc-note" id="calcNote"></p>
+        </div>
+      </section>
+
+      <section class="panel" id="tab-emergency">
+        <h2 class="ptitle" id="emTitle"></h2>
+        <p class="psub" id="emSub"></p>
+        <div class="disclaimer" id="emDisclaimer"></div>
+        <div class="em-grid" id="emGrid"></div>
+        <div class="em-answer" id="emAnswer"></div>
+      </section>
+
+      <section class="panel" id="tab-buy">
+        <h2 class="ptitle" id="buyTitle"></h2>
+        <p class="psub" id="buySub"></p>
+        <div class="buy-grid" id="buyGrid"></div>
+      </section>
+
+    </div>
+    <footer id="footerText"></footer>
+  </main>
+</div>
+
+<nav class="bottombar" id="bottombar"></nav>
+
+<script>
+/* ================= ICONS ================= */
+const navIcons = {
+  home:`<svg class="ic" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 4l8 7.5"/><path d="M6 10v9.5h12V10"/></svg>`,
+  diagnose:`<svg class="ic" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v6a4 4 0 008 0V3"/><path d="M10 12v3.5a5 5 0 0010 0V13"/><circle cx="20" cy="11.5" r="1.6"/></svg>`,
+  paw:`<svg class="ic" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="16" rx="5" ry="4.2"/><circle cx="6.5" cy="9" r="1.8"/><circle cx="11" cy="6.5" r="1.8"/><circle cx="16" cy="6.5" r="1.8"/><circle cx="19.5" cy="10.5" r="1.8"/></svg>`,
+  heart:`<svg class="ic" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-9.5-9A5 5 0 0112 6a5 5 0 019.5 5c-2.5 4.6-9.5 9-9.5 9z"/></svg>`,
+  target:`<svg class="ic" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg>`,
+  bowl:`<svg class="ic" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12h17a8.5 8.5 0 01-17 0z"/><path d="M12 4.5v3.5"/></svg>`,
+  alert:`<svg class="ic" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 22 20H2L12 3z"/><path d="M12 10v4"/><circle cx="12" cy="16.7" r=".4" fill="currentColor"/></svg>`,
+  bag:`<svg class="ic" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg>`
+};
+function bigIcon(name){ return navIcons[name].replace('class="ic"', 'class="ic" style="width:100%;height:100%"'); }
+
+/* ================= I18N ================= */
+let LANG = localStorage.getItem('panjeyar-lang') || 'fa';
+function t(f){ return f[LANG]; }
+function toNum(n){ return LANG==='fa' ? String(n).replace(/\d/g, d=>'۰۱۲۳۴۵۶۷۸۹'[d]) : String(n); }
+
+const UI = {
+  brand:{fa:'پنجه‌یار', en:'Panjeyar'},
+  tabs:{home:{fa:'خانه',en:'Home'}, diagnose:{fa:'تشخیص',en:'Diagnose'}, breeds:{fa:'اطلس نژادها',en:'Breed Atlas'},
+    match:{fa:'رفیق‌یاب',en:'Buddy Finder'}, quiz:{fa:'چالش',en:'Challenge'}, tools:{fa:'ابزارها',en:'Tools'},
+    emergency:{fa:'اورژانس',en:'Emergency'}, buy:{fa:'خرید',en:'Shopping'}},
+  sbNote:{fa:'🩺 این سایت جایگزین دامپزشک نیست — برای هر مشکل جدی حتماً به دامپزشک مراجعه کن.', en:'🩺 This site is not a substitute for a vet — always see a vet for anything serious.'},
+  heroBadge:{fa:'🐕🐈 راهنمای جامع نگهداری حیوان خانگی', en:'🐕🐈 A complete guide to pet care'},
+  heroTitle1:{fa:'هر پارس، میو و رفتاری', en:'Every bark, meow, and'},
+  heroTitleSpan:{fa:'یه معنی داره', en:'quirk means something'},
+  heroLede:{fa:'بی‌حالی، خارش، پارس بی‌دلیل — همه‌شون یه چیزی می‌خوان بهت بگن. پنجه‌یار کمکت می‌کنه بفهمی حیوونت چی نیاز داره و کدوم نژاد اصلاً برای زندگی تو مناسبه.',
+    en:'Lethargy, itching, random barking — it\'s all trying to tell you something. Panjeyar helps you figure out what your pet needs, and which breed actually fits your life.'},
+  featTitle:{fa:'رفیق‌یاب: بگو زندگیت چطوریه', en:'Buddy Finder: tell us about your life'},
+  featDesc:{fa:'۳ سوال کوتاه، نژاد مناسب زندگیت رو پیدا می‌کنیم', en:'3 quick questions — we\'ll find the breed that fits your life'},
+  tipLabel:{fa:'نکته‌ی امروز:', en:'Tip of the day:'},
+  diagTitle:{fa:'تشخیص‌یار حیوان خانگی', en:'Pet Diagnosis Assistant'},
+  diagSub:{fa:'علامتی که تو حیوونت دیدی رو انتخاب کن تا یه راهنمایی اولیه بگیری.', en:'Pick the symptoms you\'ve noticed to get initial guidance.'},
+  diagDisclaimer:{fa:'⚠️ این ابزار فقط یه راهنمایی اولیه‌ست، نه تشخیص قطعی. برای هر علامت جدی یا طولانی‌مدت، حتماً به دامپزشک مراجعه کن.', en:'⚠️ This tool only offers initial guidance, not a definite diagnosis. See a vet for anything serious or long-lasting.'},
+  diagBtn:{fa:'تشخیص بده', en:'Diagnose'}, resetBtn:{fa:'پاک‌سازی', en:'Clear'},
+  diagEmpty:{fa:'اول حداقل یه علامت رو انتخاب کن.', en:'Pick at least one symptom first.'},
+  diagNone:{title:{fa:'علائم واضحی پیدا نشد', en:'No clear match found'}, advice:{fa:'بیشتر مشاهده کن یا با دامپزشک مشورت کن.', en:'Keep observing, or check with a vet.'}},
+  diagReminder:{title:{fa:'یادت باشه', en:'Remember'}, advice:{fa:'این فقط راهنمایی اولیه‌ست. برای تشخیص قطعی، دامپزشک لازمه.', en:'This is initial guidance only. A vet is needed for an actual diagnosis.'}},
+  breedsTitle:{fa:'اطلس نژادها', en:'Breed Atlas'},
+  breedsSub:{fa:'۸ نژاد رایج در خونه‌های ایرانی — نیازها، مناسب چه فضایی، و مشکلات رایجشون.', en:'8 breeds common in Iranian homes — needs, ideal living space, and common issues.'},
+  spAll:{fa:'همه', en:'All'}, spDog:{fa:'🐕 سگ', en:'🐕 Dog'}, spCat:{fa:'🐈 گربه', en:'🐈 Cat'},
+  matchTitle:{fa:'رفیق‌یاب', en:'Buddy Finder'},
+  matchSub:{fa:'سه سوال کوتاه — بر اساس فضای زندگیت، وقتی که داری، و اینکه سگ می‌خوای یا گربه، نژادها رو برات مرتب می‌کنیم.',
+    en:'Three quick questions — based on your living space, time, and dog/cat preference, we\'ll rank breeds for you.'},
+  matchBack:{fa:'برگرد', en:'Back'}, matchRestart:{fa:'از اول شروع کن', en:'Start over'},
+  best:{fa:'بهترین گزینه‌ها', en:'Best matches'}, good:{fa:'گزینه‌های خوب', en:'Good options'}, notrec:{fa:'مناسب نیست', en:'Not recommended'},
+  quizTitle:{fa:'کارآگاه پنجه', en:'Paw Detective'},
+  quizSub:{fa:'۸ تا موقعیت واقعی جلوت میذاریم — ببین غریزه‌ات چی می‌گه.', en:'8 real-life scenarios — let\'s see what your instinct says.'},
+  scoreLabel:{fa:'امتیاز', en:'Score'}, ofLabel:{fa:'از', en:'of'},
+  toolsTitle:{fa:'ابزارها', en:'Tools'}, toolsSub:{fa:'تخمین غذای روزانه — یه راهنمای کلیه، نه دستور دقیق دامپزشکی.', en:'A daily food estimate — general guidance, not a precise vet prescription.'},
+  calcTitle:{fa:'🍽️ محاسبه‌گر غذای روزانه', en:'🍽️ Daily Food Calculator'},
+  calcL1:{fa:'نوع حیوان', en:'Pet type'}, calcL2:{fa:'وزن (کیلوگرم)', en:'Weight (kg)'}, calcL3:{fa:'سطح فعالیت', en:'Activity level'},
+  optDog:{fa:'سگ', en:'Dog'}, optCat:{fa:'گربه', en:'Cat'},
+  optLow:{fa:'کم (بیشتر خوابیده)', en:'Low (mostly resting)'}, optMed:{fa:'متوسط', en:'Medium'}, optHigh:{fa:'زیاد (پرانرژی)', en:'High (very active)'},
+  calcBtn:{fa:'محاسبه کن', en:'Calculate'},
+  calcResultText:{fa:'گرم غذای خشک در روز — بهتره در ۲ وعده تقسیمش کنی.', en:'grams of dry food per day — best split into 2 meals.'},
+  calcNote:{fa:'این عدد یه تخمین کلیه بر اساس فرمول‌های عمومی؛ مقدار دقیق رو از روی بسته‌ی غذا یا نظر دامپزشک تنظیم کن.', en:'This is a rough estimate based on general formulas; fine-tune it using the food package or your vet\'s advice.'},
+  emTitle:{fa:'اورژانس', en:'Emergency'}, emSub:{fa:'نزدیک‌ترین وضعیت رو انتخاب کن — همه‌شون در نهایت به یه چیز ختم می‌شن: دامپزشک، سریع.', en:'Pick the closest situation — they all lead to the same thing: a vet, fast.'},
+  emDisclaimer:{fa:'🚨 در هر وضعیت اورژانسی، تماس با نزدیک‌ترین دامپزشک اولویت اوله. این بخش فقط کمک اولیه‌ی عمومیه.', en:'🚨 In any emergency, contacting the nearest vet is priority one. This section is general first-aid guidance only.'},
+  buyTitle:{fa:'راهنمای خرید', en:'Shopping Guide'}, buySub:{fa:'قبل از اهلی کردن یا خرید بعدی‌ت اینا رو بدون.', en:'Know these before adopting or buying next.'},
+  footer:{fa:'🐾 پنجه‌یار — دفتر دیجیتال هر کسی که یه حیوون خونگی داره', en:'🐾 Panjeyar — a digital notebook for anyone with a pet'},
+  tileDiagT:{fa:'تشخیص کن', en:'Diagnose'}, tileDiagD:{fa:'علائم حیوونت رو بگو', en:'Tell us the symptoms'},
+  tileBreedT:{fa:'اطلس نژادها', en:'Breed atlas'}, tileBreedD:{fa:'۸ نژاد رایج، شناخت کامل', en:'8 common breeds, full profiles'},
+  tileQuizT:{fa:'چالش‌ها', en:'Challenges'}, tileQuizD:{fa:'بازی و شخصیت‌شناسی', en:'Quiz and lifestyle matching'},
+  tileToolsT:{fa:'ابزارها', en:'Tools'}, tileToolsD:{fa:'محاسبه‌گر غذا', en:'Food calculator'},
+  tileEmT:{fa:'اورژانس', en:'Emergency'}, tileEmD:{fa:'کمک فوری وقتی وقت نداری', en:'Quick help when time matters'},
+  tileBuyT:{fa:'راهنمای خرید', en:'Shopping guide'}, tileBuyD:{fa:'قبل از خرید اینا رو بدون', en:'Know before you buy'}
+};
+const dailyTips = [
+  {fa:'تغییر ناگهانی غذا معده‌ی حیوونت رو به‌هم می‌ریزه — همیشه طی چند روز غذای جدید رو جایگزین کن.', en:'A sudden food change upsets your pet\'s stomach — always transition over a few days.'},
+  {fa:'واکسیناسیون سالانه رو فراموش نکن، حتی اگه حیوونت همیشه توی خونه‌ست.', en:'Don\'t skip annual vaccinations, even for indoor-only pets.'},
+  {fa:'ظرف آب رو هر روز عوض کن؛ آب راکد باکتری جمع می‌کنه.', en:'Refresh the water bowl daily; stagnant water breeds bacteria.'},
+  {fa:'بازی روزانه فقط برای سرگرمی نیست — از خیلی از رفتارهای مخرب جلوگیری می‌کنه.', en:'Daily play isn\'t just fun — it prevents a lot of destructive behavior.'},
+  {fa:'قبل از سفر یا مهمونی، یه جای امن و آروم برای حیوونت آماده کن تا استرس نگیره.', en:'Before travel or guests, set up a calm safe space so your pet doesn\'t get stressed.'},
+  {fa:'ناخن‌های بلند می‌تونن باعث درد و مشکل راه رفتن بشن؛ منظم کوتاهشون کن.', en:'Long nails can cause pain and trouble walking; trim them regularly.'},
+  {fa:'هر تغییر ناگهانی در رفتار (پرخوری، کم‌خوری، پنهان شدن) ارزش توجه داره.', en:'Any sudden behavior change (overeating, undereating, hiding) is worth paying attention to.'}
+];
+
+/* ================= BREEDS ================= */
+const breeds = [
+  {id:'gsd', sp:'dog', energy:'high', space:'large', grooming:'medium',
+   name:{fa:'ژرمن شپرد', en:'German Shepherd'}, size:{fa:'بزرگ', en:'Large'}, temperament:{fa:'باهوش، وفادار، نگهبان خوب', en:'Smart, loyal, a great guardian'},
+   groomingTxt:{fa:'هفته‌ای ۲-۳ بار شانه', en:'Brush 2–3 times a week'}, place:{fa:'حیاط‌دار یا خونه‌ی بزرگ، پیاده‌روی روزانه‌ی زیاد', en:'A yard or large home, needs long daily walks'}, lifespan:{fa:'۹-۱۳ سال', en:'9–13 years'},
+   problems:[
+     {p:{fa:'رفتار مضطرب یا پرخاشگری خفیف', en:'Anxious or mildly aggressive behavior'}, s:{fa:'نیاز به تمرین و اجتماعی‌سازی زودهنگام داره؛ تنها گذاشتن طولانی توصیه نمی‌شه.', en:'Needs early training and socialization; long periods alone aren\'t recommended.'}},
+     {p:{fa:'لنگیدن در سن بالا', en:'Limping later in life'}, s:{fa:'نشونه‌ی احتمالی مشکل مفصلی؛ حتماً دامپزشک ببینه.', en:'A possible sign of joint trouble; have a vet check it.'}},
+     {p:{fa:'ریزش موی فصلی زیاد', en:'Heavy seasonal shedding'}, s:{fa:'برس‌کشی منظم کمک می‌کنه کمتر تو خونه بریزه.', en:'Regular brushing keeps the shedding under control.'}}
+   ]},
+  {id:'pug', sp:'dog', energy:'low', space:'small', grooming:'low',
+   name:{fa:'پاگ', en:'Pug'}, size:{fa:'کوچک', en:'Small'}, temperament:{fa:'بازیگوش، دوست‌داشتنی، وابسته به صاحب', en:'Playful, affectionate, attached to its owner'},
+   groomingTxt:{fa:'کم، ولی چین‌های صورت باید تمیز بمونه', en:'Low, but facial folds need regular cleaning'}, place:{fa:'کاملاً مناسب آپارتمان', en:'Great for apartments'}, lifespan:{fa:'۱۲-۱۵ سال', en:'12–15 years'},
+   problems:[
+     {p:{fa:'نفس‌نفس شدید در گرما', en:'Heavy panting in heat'}, s:{fa:'پوزه‌ی کوتاه تهویه رو سخت می‌کنه؛ تو گرمای زیاد بیرون نبرش.', en:'Its short snout makes cooling hard; avoid taking it out in high heat.'}},
+     {p:{fa:'التهاب چین‌های پوست صورت', en:'Facial skin-fold irritation'}, s:{fa:'چین‌ها رو مرتب با پارچه‌ی مرطوب تمیز کن تا عفونت نکنه.', en:'Clean the folds regularly with a damp cloth to prevent infection.'}},
+     {p:{fa:'افزایش وزن سریع', en:'Rapid weight gain'}, s:{fa:'پاگ‌ها مستعد چاقی‌ان؛ مقدار غذا رو دقیق اندازه بده.', en:'Pugs are prone to obesity; measure food portions carefully.'}}
+   ]},
+  {id:'pom', sp:'dog', energy:'medium', space:'small', grooming:'high',
+   name:{fa:'پامرانین (اسپیتز)', en:'Pomeranian'}, size:{fa:'خیلی کوچک', en:'Very small'}, temperament:{fa:'پرانرژی، کمی زبون‌دار', en:'Energetic, a bit vocal'},
+   groomingTxt:{fa:'زیاد، شانه‌ی روزانه', en:'High, daily brushing'}, place:{fa:'کاملاً مناسب آپارتمان', en:'Great for apartments'}, lifespan:{fa:'۱۲-۱۶ سال', en:'12–16 years'},
+   problems:[
+     {p:{fa:'پارس زیاد و بی‌دلیل', en:'Excessive, unprompted barking'}, s:{fa:'نیاز به آموزش «سکوت» داره؛ تشویق موقع آرامش کمک می‌کنه.', en:'Needs "quiet" training; rewarding calm moments helps.'}},
+     {p:{fa:'گره خوردن موها', en:'Tangled fur'}, s:{fa:'شانه‌ی روزانه لازمه، وگرنه موهاش به‌شدت گره می‌خوره.', en:'Needs daily brushing or the coat mats badly.'}},
+     {p:{fa:'مشکل دندان زودهنگام', en:'Early dental issues'}, s:{fa:'نژادهای کوچیک مستعد جرم دندونن؛ مسواک منظم توصیه می‌شه.', en:'Small breeds are prone to tartar; regular brushing is recommended.'}}
+   ]},
+  {id:'lab', sp:'dog', energy:'high', space:'large', grooming:'medium',
+   name:{fa:'لابرادور', en:'Labrador'}, size:{fa:'بزرگ', en:'Large'}, temperament:{fa:'دوستانه، صبور، مناسب خانواده', en:'Friendly, patient, great for families'},
+   groomingTxt:{fa:'متوسط، ریزش مو زیاد', en:'Medium, sheds a lot'}, place:{fa:'بهتره فضای باز یا پیاده‌روی روزانه داشته باشه', en:'Ideally has outdoor space or daily walks'}, lifespan:{fa:'۱۰-۱۲ سال', en:'10–12 years'},
+   problems:[
+     {p:{fa:'پرخوری و افزایش وزن', en:'Overeating and weight gain'}, s:{fa:'اشتهای زیادی داره؛ کنترل دقیق مقدار غذا مهمه.', en:'Has a huge appetite; careful portion control matters.'}},
+     {p:{fa:'جویدن وسایل خونه', en:'Chewing household items'}, s:{fa:'معمولاً از کمبود ورزشه؛ اسباب‌بازی جونده در دسترسش بذار.', en:'Usually from lack of exercise; keep chew toys available.'}},
+     {p:{fa:'ریزش موی فصلی سنگین', en:'Heavy seasonal shedding'}, s:{fa:'برس‌کشی هفتگی حجم ریزش رو کم می‌کنه.', en:'Weekly brushing reduces the shedding load.'}}
+   ]},
+  {id:'persian', sp:'cat', energy:'low', space:'small', grooming:'high',
+   name:{fa:'پرشین (گربه ایرانی)', en:'Persian Cat'}, size:{fa:'متوسط', en:'Medium'}, temperament:{fa:'آروم، مطیع، کم‌سروصدا', en:'Calm, gentle, quiet'},
+   groomingTxt:{fa:'خیلی زیاد، شانه‌ی روزانه اجباری', en:'Very high, daily brushing is a must'}, place:{fa:'کاملاً مناسب آپارتمان', en:'Great for apartments'}, lifespan:{fa:'۱۲-۱۷ سال', en:'12–17 years'},
+   problems:[
+     {p:{fa:'گره خوردن شدید موها', en:'Severely matted fur'}, s:{fa:'اگه هر روز شانه نزنی، موهاش کیسه می‌شه و کوتاهی دامپزشکی لازم می‌شه.', en:'Without daily brushing the coat mats badly and needs a vet shave.'}},
+     {p:{fa:'لکه‌ی قهوه‌ای زیر چشم', en:'Brown tear stains'}, s:{fa:'ترشح طبیعی چشمه؛ هر روز با پارچه‌ی مرطوب پاک کن.', en:'Natural eye discharge; wipe daily with a damp cloth.'}},
+     {p:{fa:'نفس‌کشیدن سخت در گرما', en:'Labored breathing in heat'}, s:{fa:'صورت صاف تهویه رو محدود می‌کنه؛ در گرما مراقبش باش.', en:'Its flat face limits airflow; watch it closely in hot weather.'}}
+   ]},
+  {id:'van', sp:'cat', energy:'high', space:'medium', grooming:'medium',
+   name:{fa:'ون (گربه وان)', en:'Van Cat'}, size:{fa:'متوسط تا بزرگ', en:'Medium to large'}, temperament:{fa:'بازیگوش، کنجکاو، آب‌دوست', en:'Playful, curious, water-loving'},
+   groomingTxt:{fa:'متوسط، هفته‌ای ۲-۳ بار', en:'Medium, 2–3 times a week'}, place:{fa:'فضای باز رو دوست داره ولی با آپارتمان بزرگ هم کنار میاد', en:'Loves outdoor space but adapts to a large apartment'}, lifespan:{fa:'۱۲-۱۷ سال', en:'12–17 years'},
+   problems:[
+     {p:{fa:'پریدن زیاد و کنجکاوی در ارتفاع', en:'Constant jumping and climbing'}, s:{fa:'نیاز به فضای عمودی (قفسه، درخت گربه) داره.', en:'Needs vertical space (shelves, a cat tree).'}},
+     {p:{fa:'علاقه به بازی با آب', en:'Loves playing with water'}, s:{fa:'طبیعیه براش، فقط مراقب باش شیر آب رو باز نذاری وقتی نیستی.', en:'Totally normal — just don\'t leave taps running when you\'re out.'}},
+     {p:{fa:'رفتار مخرب از کسالت', en:'Destructive behavior from boredom'}, s:{fa:'اگه تحریک ذهنی کافی نگیره، وسایل خونه رو خراب می‌کنه.', en:'Without enough mental stimulation, it will destroy things.'}}
+   ]},
+  {id:'british', sp:'cat', energy:'low', space:'small', grooming:'low',
+   name:{fa:'بریتیش‌شورت‌هیر', en:'British Shorthair'}, size:{fa:'متوسط تا بزرگ', en:'Medium to large'}, temperament:{fa:'آروم، مستقل، کم‌توقع', en:'Calm, independent, low-maintenance'},
+   groomingTxt:{fa:'کم تا متوسط', en:'Low to medium'}, place:{fa:'کاملاً مناسب آپارتمان', en:'Great for apartments'}, lifespan:{fa:'۱۲-۲۰ سال', en:'12–20 years'},
+   problems:[
+     {p:{fa:'افزایش وزن سریع', en:'Rapid weight gain'}, s:{fa:'انرژی پایینی داره؛ باید فعالانه باهاش بازی کنی وگرنه چاق می‌شه.', en:'Low energy level; you need to actively play with it or it gains weight.'}},
+     {p:{fa:'کم‌تحرکی زیاد', en:'Very low activity'}, s:{fa:'اسباب‌بازی تعاملی و زمان بازی روزانه رو فراموش نکن.', en:'Don\'t skip interactive toys and daily playtime.'}},
+     {p:{fa:'یبوست دوره‌ای', en:'Occasional constipation'}, s:{fa:'آب کافی و فیبر در غذا کمک می‌کنه؛ اگه ادامه داشت دامپزشک ببینه.', en:'Enough water and fiber helps; see a vet if it persists.'}}
+   ]},
+  {id:'mixed', sp:'cat', energy:'medium', space:'small', grooming:'low',
+   name:{fa:'گربه خانگی / محلی', en:'Domestic / Mixed Cat'}, size:{fa:'متغیر', en:'Variable'}, temperament:{fa:'بسته به فرد، معمولاً سازگار و مقاوم', en:'Depends on the individual, usually adaptable and hardy'},
+   groomingTxt:{fa:'کم تا متوسط', en:'Low to medium'}, place:{fa:'هم آپارتمان هم فضای باز، خیلی سازگاره', en:'Adapts well to both apartments and outdoor space'}, lifespan:{fa:'۱۲-۱۸ سال', en:'12–18 years'},
+   problems:[
+     {p:{fa:'ترس زیاد یا گوشه‌گیری اولیه', en:'Initial fearfulness or withdrawal'}, s:{fa:'اگه تازه از خیابون اومده، چند هفته زمان برای اعتماد کردن لازم داره.', en:'If recently off the street, it needs weeks to build trust.'}},
+     {p:{fa:'انگل روده یا کک', en:'Intestinal parasites or fleas'}, s:{fa:'قبل از هر چیز با دامپزشک برای ضدانگل و واکسن کامل هماهنگ کن.', en:'Coordinate with a vet first for deworming and a full vaccine schedule.'}},
+     {p:{fa:'علامت‌گذاری با ادرار (در نرهای عقیم‌نشده)', en:'Urine marking (in unneutered males)'}, s:{fa:'عقیم‌سازی معمولاً این رفتار رو به‌شدت کم می‌کنه.', en:'Neutering usually reduces this behavior significantly.'}}
+   ]}
+];
+
+/* ================= NAV & HOME ================= */
+const tabsOrder = ['home','diagnose','breeds','match','quiz','tools','emergency','buy'];
+const tabIconKey = {home:'home',diagnose:'diagnose',breeds:'paw',match:'heart',quiz:'target',tools:'bowl',emergency:'alert',buy:'bag'};
+function renderNav(){
+  const sb = document.getElementById('sbNav'); sb.innerHTML='';
+  const bb = document.getElementById('bottombar'); bb.innerHTML='';
+  tabsOrder.forEach(id=>{
+    const s = document.createElement('div');
+    s.className='sb-item'+(id==='home'?' active':''); s.id='sb-'+id;
+    s.innerHTML = navIcons[tabIconKey[id]] + `<span>${t(UI.tabs[id])}</span>`;
+    s.onclick=()=>switchTab(id);
+    sb.appendChild(s);
+    const b = document.createElement('button');
+    b.className='bb-item'+(id==='home'?' active':''); b.id='bb-'+id;
+    b.innerHTML = navIcons[tabIconKey[id]] + `<span>${t(UI.tabs[id])}</span>`;
+    b.onclick=()=>switchTab(id);
+    bb.appendChild(b);
+  });
+}
+function switchTab(id){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.sb-item').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.bb-item').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  document.getElementById('sb-'+id).classList.add('active');
+  document.getElementById('bb-'+id).classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+function renderStaticText(){
+  document.documentElement.lang = LANG;
+  document.documentElement.dir = LANG==='fa' ? 'rtl' : 'ltr';
+  ['langBtn','langBtnM'].forEach(id=>document.getElementById(id).textContent = LANG==='fa' ? 'EN' : 'FA');
+  document.getElementById('brandText').textContent = t(UI.brand);
+  document.getElementById('sbNote').textContent = t(UI.sbNote);
+  document.getElementById('heroBadge').textContent = t(UI.heroBadge);
+  document.getElementById('heroTitle').innerHTML = `${t(UI.heroTitle1)} <span>${t(UI.heroTitleSpan)}</span>`;
+  document.getElementById('heroLede').textContent = t(UI.heroLede);
+  document.querySelector('.feature-card .fic').innerHTML = bigIcon('heart');
+  document.getElementById('featTitle').textContent = t(UI.featTitle);
+  document.getElementById('featDesc').textContent = t(UI.featDesc);
+  document.getElementById('tipIc').innerHTML = navIcons.paw;
+  document.getElementById('tipLabel').textContent = t(UI.tipLabel);
+  document.getElementById('diagTitle').textContent = t(UI.diagTitle);
+  document.getElementById('diagSub').textContent = t(UI.diagSub);
+  document.getElementById('diagDisclaimer').textContent = t(UI.diagDisclaimer);
+  document.getElementById('diagBtn').textContent = t(UI.diagBtn);
+  document.getElementById('resetBtn').textContent = t(UI.resetBtn);
+  document.getElementById('breedsTitle').textContent = t(UI.breedsTitle);
+  document.getElementById('breedsSub').textContent = t(UI.breedsSub);
+  document.getElementById('spAll').textContent = t(UI.spAll);
+  document.getElementById('spDog').textContent = t(UI.spDog);
+  document.getElementById('spCat').textContent = t(UI.spCat);
+  document.getElementById('matchTitle').textContent = t(UI.matchTitle);
+  document.getElementById('matchSub').textContent = t(UI.matchSub);
+  document.getElementById('quizTitle').textContent = t(UI.quizTitle);
+  document.getElementById('quizSub').textContent = t(UI.quizSub);
+  document.getElementById('toolsTitle').textContent = t(UI.toolsTitle);
+  document.getElementById('toolsSub').textContent = t(UI.toolsSub);
+  document.getElementById('calcTitle').textContent = t(UI.calcTitle);
+  document.getElementById('calcL1').textContent = t(UI.calcL1);
+  document.getElementById('calcL2').textContent = t(UI.calcL2);
+  document.getElementById('calcL3').textContent = t(UI.calcL3);
+  document.getElementById('opt-dog').textContent = t(UI.optDog);
+  document.getElementById('opt-cat').textContent = t(UI.optCat);
+  document.getElementById('opt-low').textContent = t(UI.optLow);
+  document.getElementById('opt-med').textContent = t(UI.optMed);
+  document.getElementById('opt-high').textContent = t(UI.optHigh);
+  document.getElementById('calcBtn').textContent = t(UI.calcBtn);
+  document.getElementById('calcNote').textContent = t(UI.calcNote);
+  document.getElementById('emTitle').textContent = t(UI.emTitle);
+  document.getElementById('emSub').textContent = t(UI.emSub);
+  document.getElementById('emDisclaimer').textContent = t(UI.emDisclaimer);
+  document.getElementById('buyTitle').textContent = t(UI.buyTitle);
+  document.getElementById('buySub').textContent = t(UI.buySub);
+  document.getElementById('footerText').textContent = t(UI.footer);
+}
+const bentoData = [
+  {cls:'wide', ic:'diagnose', tKey:'tileDiagT', dKey:'tileDiagD', tab:'diagnose'},
+  {cls:'', ic:'paw', tKey:'tileBreedT', dKey:'tileBreedD', tab:'breeds'},
+  {cls:'', ic:'target', tKey:'tileQuizT', dKey:'tileQuizD', tab:'quiz'},
+  {cls:'', ic:'bowl', tKey:'tileToolsT', dKey:'tileToolsD', tab:'tools'},
+  {cls:'', ic:'alert', tKey:'tileEmT', dKey:'tileEmD', tab:'emergency'},
+  {cls:'wide', ic:'bag', tKey:'tileBuyT', dKey:'tileBuyD', tab:'buy'}
+];
+function renderBento(){
+  const box = document.getElementById('bento'); box.innerHTML='';
+  bentoData.forEach(b=>{
+    const el = document.createElement('div');
+    el.className='tile '+b.cls;
+    el.innerHTML = `${navIcons[b.ic]}<div class="t">${t(UI[b.tKey])}</div><div class="d">${t(UI[b.dKey])}</div>`;
+    el.onclick=()=>switchTab(b.tab);
+    box.appendChild(el);
+  });
+}
+function renderTip(){ document.getElementById('dailyTip').textContent = t(dailyTips[Math.floor(Math.random()*dailyTips.length)]); }
+
+/* ================= DIAGNOSIS ================= */
+const symptoms = [
+  {id:'appetite', label:{fa:'کاهش اشتها بیش از یک روز', en:'Loss of appetite for more than a day'}},
+  {id:'vomit', label:{fa:'استفراغ مکرر', en:'Repeated vomiting'}},
+  {id:'diarrhea', label:{fa:'اسهال', en:'Diarrhea'}},
+  {id:'lethargy', label:{fa:'بی‌حالی و کم‌تحرکی غیرعادی', en:'Unusual lethargy and inactivity'}},
+  {id:'itch', label:{fa:'خارش شدید پوست', en:'Intense skin itching'}},
+  {id:'limp', label:{fa:'لنگیدن یا مشکل راه رفتن', en:'Limping or trouble walking'}},
+  {id:'cough', label:{fa:'سرفه یا عطسه‌ی مداوم', en:'Persistent coughing or sneezing'}},
+  {id:'thirst', label:{fa:'تشنگی و ادرار بیش‌ازحد', en:'Excessive thirst and urination'}}
+];
+const diagRules = [
+  {match:['vomit','diarrhea'], title:{fa:'احتمال مشکل گوارشی', en:'Possible digestive issue'}, advice:{fa:'اگه بیشتر از یک روز طول کشید یا شدید بود، حتماً دامپزشک ببینتش؛ آب تازه همیشه در دسترسش بذار.', en:'If it lasts more than a day or is severe, see a vet; always keep fresh water available.'}},
+  {match:['appetite','lethargy'], title:{fa:'بی‌حالی و بی‌اشتهایی', en:'Lethargy and loss of appetite'}, advice:{fa:'می‌تونه از استرس ساده تا مشکل جدی باشه؛ اگه بیشتر از یک روز ادامه داشت، به دامپزشک مراجعه کن.', en:'Could be anything from mild stress to something serious; see a vet if it lasts more than a day.'}},
+  {match:['itch'], title:{fa:'احتمال آلرژی یا انگل پوستی', en:'Possible allergy or skin parasite'}, advice:{fa:'پوستش رو برای کک یا قرمزی چک کن؛ برای تشخیص دقیق و درمان به دامپزشک نیاز داری.', en:'Check the skin for fleas or redness; you\'ll need a vet for an exact diagnosis and treatment.'}},
+  {match:['limp'], title:{fa:'احتمال آسیب مفصلی یا عضلانی', en:'Possible joint or muscle injury'}, advice:{fa:'فعلاً از پریدن و دویدن زیاد جلوگیری کن و در اسرع وقت دامپزشک ببینتش.', en:'Limit jumping and running for now, and see a vet as soon as possible.'}},
+  {match:['cough'], title:{fa:'احتمال مشکل تنفسی', en:'Possible respiratory issue'}, advice:{fa:'سرفه‌ی مداوم نباید نادیده گرفته بشه، مخصوصاً در نژادهای پوزه‌کوتاه؛ به دامپزشک مراجعه کن.', en:'Persistent coughing shouldn\'t be ignored, especially in short-snouted breeds; see a vet.'}},
+  {match:['thirst'], title:{fa:'تشنگی و ادرار غیرعادی', en:'Unusual thirst and urination'}, advice:{fa:'می‌تونه نشونه‌ی مشکلات متابولیک باشه؛ حتماً با دامپزشک چک کن.', en:'Could signal a metabolic issue; get it checked by a vet.'}}
+];
+function renderSymptoms(){
+  const grid = document.getElementById('symptomGrid'); grid.innerHTML='';
+  symptoms.forEach(s=>{
+    const el = document.createElement('div'); el.className='symptom'; el.id='sym-'+s.id; el.tabIndex=0;
+    el.innerHTML = `<span class="box"></span><span>${t(s.label)}</span>`;
+    el.onclick=()=>el.classList.toggle('on');
+    grid.appendChild(el);
+  });
+}
+function diagnose(){
+  const picked = symptoms.filter(s=>document.getElementById('sym-'+s.id).classList.contains('on')).map(s=>s.id);
+  const result = document.getElementById('diagResult');
+  if(picked.length===0){ result.innerHTML = `<p style="color:var(--ink-dim);font-size:13.5px;">${t(UI.diagEmpty)}</p>`; result.classList.add('show'); return; }
+  const matches = diagRules.filter(r=>r.match.some(m=>picked.includes(m)));
+  result.innerHTML = (matches.length ? matches.map(m=>`<div class="diag-item"><b>${t(m.title)}</b><p>${t(m.advice)}</p></div>`).join('') :
+    `<div class="diag-item"><b>${t(UI.diagNone.title)}</b><p>${t(UI.diagNone.advice)}</p></div>`)
+    + `<div class="diag-item" style="border-color:var(--danger); background:var(--danger-soft);"><b style="color:var(--danger-ink);">${t(UI.diagReminder.title)}</b><p>${t(UI.diagReminder.advice)}</p></div>`;
+  result.classList.add('show');
+}
+function resetDiag(){ symptoms.forEach(s=>document.getElementById('sym-'+s.id).classList.remove('on')); document.getElementById('diagResult').classList.remove('show'); }
+
+/* ================= BREED ATLAS ================= */
+function renderBreeds(filter){
+  const list = document.getElementById('breedList'); list.innerHTML='';
+  breeds.filter(b=>filter==='all'||b.sp===filter).forEach(b=>{
+    const el = document.createElement('div'); el.className='breed'; el.id='breed-'+b.id;
+    el.innerHTML = `
+      <div class="breed-head" onclick="const e=document.getElementById('breed-${b.id}'); e.classList.toggle('open'); const bd=document.getElementById('bbody-${b.id}'); bd.style.maxHeight = e.classList.contains('open') ? bd.scrollHeight+'px' : null;">
+        <div class="breed-ic">${b.sp==='dog'?'🐕':'🐈'}</div>
+        <div><div class="breed-name">${t(b.name)}</div><div class="breed-tags">${b.sp==='dog'?t(UI.spDog):t(UI.spCat)} · ${t(b.size)}</div></div>
+        <div class="breed-chevron">‹</div>
+      </div>
+      <div class="breed-body" id="bbody-${b.id}">
+        <div class="breed-body-inner">
+          <div class="meta-grid">
+            <div class="meta-item"><div class="lab">${LANG==='fa'?'خلق‌وخو':'Temperament'}</div><div class="val">${t(b.temperament)}</div></div>
+            <div class="meta-item"><div class="lab">${LANG==='fa'?'نگهداری مو':'Grooming'}</div><div class="val">${t(b.groomingTxt)}</div></div>
+            <div class="meta-item"><div class="lab">${LANG==='fa'?'فضای مناسب':'Best space'}</div><div class="val">${t(b.place)}</div></div>
+            <div class="meta-item"><div class="lab">${LANG==='fa'?'طول عمر':'Lifespan'}</div><div class="val">${t(b.lifespan)}</div></div>
+          </div>
+          <div class="prob-list">${b.problems.map(pr=>`<div class="prob-item"><b>${t(pr.p)}</b><span>${t(pr.s)}</span></div>`).join('')}</div>
+        </div>
+      </div>`;
+    list.appendChild(el);
+  });
+}
+document.addEventListener('click', e=>{
+  if(e.target.classList.contains('spbtn')){
+    document.querySelectorAll('.spbtn').forEach(b=>b.classList.remove('active'));
+    e.target.classList.add('active');
+    renderBreeds(e.target.dataset.sp);
+  }
+});
+
+/* ================= PAW DETECTIVE QUIZ ================= */
+const quiz = [
+  {q:{fa:'حیوونت یهو دیگه غذا نمی‌خوره و بی‌حاله. اول چیکار می‌کنی؟', en:'Your pet suddenly stops eating and seems lethargic. What do you do first?'},
+   opts:[{fa:'صبر می‌کنم خودش خوب بشه',en:'Wait for it to get better on its own'},{fa:'یه روز صبر می‌کنم، اگه ادامه داشت دامپزشک می‌برم',en:'Wait a day; if it continues, take it to the vet'},{fa:'بهش زور می‌گم غذا بخوره',en:'Force it to eat'}], correct:1},
+  {q:{fa:'کدوم نژاد سگ به‌خاطر پوزه‌ی کوتاهش تو گرما مشکل تنفسی بیشتری داره؟', en:'Which dog breed struggles more with breathing in the heat due to its short snout?'},
+   opts:[{fa:'لابرادور',en:'Labrador'},{fa:'پاگ',en:'Pug'},{fa:'ژرمن شپرد',en:'German Shepherd'}], correct:1},
+  {q:{fa:'گربه‌ی پرشین چقدر به شانه‌کشی روزانه نیاز داره؟', en:'How much daily brushing does a Persian cat need?'},
+   opts:[{fa:'اصلاً لازم نیست',en:'None at all'},{fa:'هفته‌ای یک‌بار کافیه',en:'Once a week is enough'},{fa:'هر روز، وگرنه موهاش گره می‌خوره',en:'Every day, or its fur mats'}], correct:2},
+  {q:{fa:'اگه حیوونت چیز مشکوکی خورد، اول کاری چیکار می‌کنی؟', en:'If your pet ate something suspicious, what\'s your first move?'},
+   opts:[{fa:'به‌زور بالا میارمش',en:'Force it to vomit'},{fa:'بسته‌بندی ماده رو نگه می‌دارم و با دامپزشک تماس می‌گیرم',en:'Keep the packaging and call the vet'},{fa:'صبر می‌کنم ببینم چی می‌شه',en:'Wait and see what happens'}], correct:1},
+  {q:{fa:'کدوم نژاد گربه از بازی با آب لذت می‌بره؟', en:'Which cat breed enjoys playing with water?'},
+   opts:[{fa:'بریتیش‌شورت‌هیر',en:'British Shorthair'},{fa:'ون',en:'Van cat'},{fa:'پرشین',en:'Persian'}], correct:1},
+  {q:{fa:'تغییر غذای حیوون خانگی باید چطور انجام بشه؟', en:'How should you switch your pet\'s food?'},
+   opts:[{fa:'یهویی و کامل',en:'All at once'},{fa:'طی چند روز به‌تدریج',en:'Gradually over a few days'},{fa:'فرقی نداره',en:'It doesn\'t matter'}], correct:1},
+  {q:{fa:'کدوم سگ بیشتر مستعد پرخوری و چاقیه؟', en:'Which dog is more prone to overeating and obesity?'},
+   opts:[{fa:'لابرادور',en:'Labrador'},{fa:'پامرانین',en:'Pomeranian'},{fa:'پاگ',en:'Pug'}], correct:0},
+  {q:{fa:'گربه‌ای که تازه از خیابون اهلی شده، چه نیازی داره؟', en:'What does a cat newly adopted off the street need?'},
+   opts:[{fa:'بلافاصله باید کاملاً آزاد باشه',en:'Immediate full freedom'},{fa:'زمان و صبر برای اعتماد کردن، به‌علاوه چکاپ دامپزشکی',en:'Time and patience to build trust, plus a vet checkup'},{fa:'هیچ نیاز خاصی نداره',en:'No special needs'}], correct:1}
+];
+let quizScore=0, quizAnswered=0;
+const quizTiers = [
+  {max:3, title:{fa:'تازه‌وارد پنجه‌شناسی 🐾', en:'Paw Rookie 🐾'}, desc:{fa:'تازه داری یاد می‌گیری — بخش اطلس نژادها رو یه دور بگرد.', en:'You\'re just starting out — browse the Breed Atlas for more.'}},
+  {max:6, title:{fa:'دوست خوب حیوانات 🐕', en:'Good Animal Friend 🐕'}, desc:{fa:'دستت خوب میاد؛ فقط چندتا نکته مونده که با یه مرور اطلس حلش می‌کنی.', en:'You\'re doing well; a quick review of the Atlas will fill the gaps.'}},
+  {max:8, title:{fa:'کارآگاه پنجه‌ی حرفه‌ای 🕵️', en:'Master Paw Detective 🕵️'}, desc:{fa:'عالی بود! غریزه‌ی نگهداری‌ت قویه.', en:'Excellent! Your pet-care instincts are strong.'}}
+];
+function renderQuiz(){
+  const box = document.getElementById('quizBox'); box.innerHTML=''; quizScore=0; quizAnswered=0;
+  document.getElementById('generalResult').classList.remove('show');
+  quiz.forEach((q,qi)=>{
+    const el = document.createElement('div'); el.className='qcard';
+    el.innerHTML = `<p class="qtext">${toNum(qi+1)}. ${t(q.q)}</p><div class="opts" id="qopts-${qi}">${q.opts.map((o,oi)=>`<div class="opt" onclick="quizAnswer(${qi},${oi})">${t(o)}</div>`).join('')}</div>`;
+    box.appendChild(el);
+  });
+  document.getElementById('quizScoreLine').innerHTML = `${t(UI.scoreLabel)}: <span id="quizScore">${toNum(0)}</span> ${t(UI.ofLabel)} <span id="quizTotal">${toNum(quiz.length)}</span>`;
+}
+function quizAnswer(qi, oi){
+  const wrap = document.getElementById('qopts-'+qi);
+  if(wrap.dataset.answered) return;
+  wrap.dataset.answered="1";
+  const q = quiz[qi];
+  [...wrap.children].forEach((o,idx)=>{ o.classList.add('disabled'); if(idx===q.correct) o.classList.add('correct'); else if(idx===oi) o.classList.add('wrong'); });
+  if(oi===q.correct){ quizScore++; document.getElementById('quizScore').textContent=toNum(quizScore); }
+  quizAnswered++;
+  if(quizAnswered===quiz.length){
+    const tier = quizTiers.find(tr=>quizScore<=tr.max);
+    const box = document.getElementById('generalResult');
+    box.innerHTML = `<div class="result-head"><div><div class="pname">${t(tier.title)}</div><p style="margin:6px 0 0; font-size:13.5px; color:var(--ink-dim);">${t(tier.desc)}</p></div></div>`;
+    box.classList.add('show');
+  }
+}
+
+/* ================= COMPANION FINDER (رفیق‌یاب) ================= */
+const matchQuestions = [
+  {key:'species', q:{fa:'سگ می‌خوای یا گربه؟', en:'Are you looking for a dog or a cat?'},
+   opts:[{v:'dog', t:{fa:'سگ', en:'A dog'}}, {v:'cat', t:{fa:'گربه', en:'A cat'}}, {v:'any', t:{fa:'فرقی نداره', en:'Either is fine'}}]},
+  {key:'time', q:{fa:'چقدر وقت برای بازی و پیاده‌روی روزانه می‌ذاری؟', en:'How much time can you give to daily play and walks?'},
+   opts:[{v:'low', t:{fa:'کم — سرم شلوغه', en:'Little — I\'m busy'}}, {v:'medium', t:{fa:'متوسط — یه نیم‌ساعتی', en:'Some — about half an hour'}}, {v:'high', t:{fa:'زیاد — عاشق فعالیت بیرونم', en:'A lot — I love being active outdoors'}}]},
+  {key:'space', q:{fa:'محل زندگیت چطوره؟', en:'What\'s your living space like?'},
+   opts:[{v:'small', t:{fa:'آپارتمان کوچیک', en:'A small apartment'}}, {v:'medium', t:{fa:'آپارتمان با بالکن', en:'An apartment with a balcony'}}, {v:'large', t:{fa:'خونه با حیاط', en:'A house with a yard'}}]}
+];
+let matchStep=0;
+const matchAnswers = {species:null, time:null, space:null};
+function renderMatchProgress(){
+  const box = document.getElementById('matchProgress'); box.innerHTML='';
+  matchQuestions.forEach((_,i)=>{
+    const d = document.createElement('div'); d.className='match-dot'+(i<matchStep?' done':(i===matchStep?' active':''));
+    d.innerHTML='<div class="fill"></div>'; box.appendChild(d);
+  });
+}
+function renderMatchStep(){
+  document.getElementById('matchResults').style.display='none';
+  document.getElementById('matchWizard').style.display='block';
+  renderMatchProgress();
+  const q = matchQuestions[matchStep];
+  const box = document.getElementById('matchWizard');
+  box.innerHTML = `<div class="match-step">
+      <p class="match-qtext">${t(q.q)}</p>
+      <div class="match-opts">${q.opts.map(o=>`<div class="match-opt" onclick="pickMatch('${q.key}','${o.v}')">${t(o.t)}</div>`).join('')}</div>
+      ${matchStep>0?`<button class="match-back" onclick="matchBack()">‹ ${t(UI.matchBack)}</button>`:''}
+    </div>`;
+}
+function pickMatch(key,val){
+  matchAnswers[key]=val;
+  const stepEl = document.querySelector('.match-step');
+  if(stepEl) stepEl.classList.add('leaving');
+  setTimeout(()=>{ if(matchStep<matchQuestions.length-1){ matchStep++; renderMatchStep(); } else { showMatchResults(); } }, 180);
+}
+function matchBack(){ if(matchStep>0){ matchStep--; renderMatchStep(); } }
+function resetMatch(){ matchStep=0; matchAnswers.species=null; matchAnswers.time=null; matchAnswers.space=null; renderMatchStep(); }
+const energyRank = {low:1, medium:2, high:3};
+const spaceRank = {small:1, medium:2, large:3};
+function timeLabel(v){ const m={low:{fa:'کم',en:'low'},medium:{fa:'متوسط',en:'medium'},high:{fa:'زیاد',en:'high'}}; return t(m[v]); }
+function spaceLabel(v){ const m={small:{fa:'کوچیک',en:'small'},medium:{fa:'متوسط',en:'medium'},large:{fa:'بزرگ',en:'large'}}; return t(m[v]); }
+function buildReasons(b){
+  const speciesOK = matchAnswers.species==='any' ? true : b.sp===matchAnswers.species;
+  const energyOK = energyRank[b.energy] <= energyRank[matchAnswers.time];
+  const spaceOK = spaceRank[b.space] <= spaceRank[matchAnswers.space];
+  const r = [];
+  r.push({ok:energyOK, text: energyOK
+    ? (LANG==='fa'?`با وقتی که داری (${timeLabel(matchAnswers.time)}) جور در میاد`:`Fits the time you have (${timeLabel(matchAnswers.time)})`)
+    : (LANG==='fa'?'به وقت و انرژی بیشتری نیاز داره':'Needs more time and energy than you have')});
+  r.push({ok:spaceOK, text: spaceOK
+    ? (LANG==='fa'?`با فضایی که داری (${spaceLabel(matchAnswers.space)}) جور در میاد`:`Fits your space (${spaceLabel(matchAnswers.space)})`)
+    : (LANG==='fa'?'به فضای بزرگ‌تری نیاز داره':'Needs more space than you have')});
+  return {reasons:r, speciesOK, energyOK, spaceOK};
+}
+function showMatchResults(){
+  document.getElementById('matchWizard').style.display='none';
+  const resBox = document.getElementById('matchResults'); resBox.style.display='block';
+  const best=[], good=[], no=[];
+  breeds.forEach(b=>{
+    const {reasons, speciesOK, energyOK, spaceOK} = buildReasons(b);
+    const entry = {b, reasons};
+    if(!speciesOK){ no.push(entry); return; }
+    if(energyOK && spaceOK) best.push(entry);
+    else if(energyOK || spaceOK) good.push(entry);
+    else no.push(entry);
+  });
+  function renderGroup(title, cls, arr){
+    if(arr.length===0) return `<h3 class="${cls}">${title}</h3><p class="match-empty">${LANG==='fa'?'موردی پیدا نشد.':'No matches found.'}</p>`;
+    return `<h3 class="${cls}">${title}</h3>` + arr.map(e=>`
+      <div class="match-breed">
+        <div class="mp-head"><div class="mp-icon">${e.b.sp==='dog'?'🐕':'🐈'}</div><div class="mp-name">${t(e.b.name)}</div></div>
+        <div class="match-reasons">${e.reasons.map(r=>`<div class="${r.ok?'yes':'no'}">${r.ok?'✓':'✕'} ${r.text}</div>`).join('')}</div>
+      </div>`).join('');
+  }
+  resBox.innerHTML = renderGroup(t(UI.best),'best',best) + renderGroup(t(UI.good),'good',good) + renderGroup(t(UI.notrec),'no',no) +
+    `<button class="btn ghost" onclick="resetMatch()" style="margin-top:10px;">${t(UI.matchRestart)}</button>`;
+}
+
+/* ================= FOOD CALCULATOR ================= */
+function calcFood(){
+  const sp = document.getElementById('calcSpecies').value;
+  const w = parseFloat(document.getElementById('calcWeight').value) || 1;
+  const act = document.getElementById('calcActivity').value;
+  const rer = 70 * Math.pow(w, 0.75);
+  const factors = sp==='dog' ? {low:1.3, med:1.5, high:1.8} : {low:1.0, med:1.2, high:1.4};
+  const kcal = rer * factors[act];
+  const grams = Math.round(kcal/3.5);
+  const box = document.getElementById('calcResult');
+  box.innerHTML = `<span class="num">${toNum(grams)}</span><span>${t(UI.calcResultText)}</span>`;
+  box.classList.add('show');
+}
+
+/* ================= EMERGENCY ================= */
+const emergencies = [
+  {label:{fa:'خونریزی شدید', en:'Severe bleeding'}, answer:{fa:'با یه پارچه‌ی تمیز فشار ملایم و پیوسته روی محل زخم بده و فوراً به نزدیک‌ترین دامپزشک اورژانس برو.', en:'Apply steady, gentle pressure with a clean cloth and rush to the nearest emergency vet.'}},
+  {label:{fa:'مسمومیت احتمالی (چیز مشکوک خورده)', en:'Possible poisoning (ate something suspicious)'}, answer:{fa:'چیزی به‌زور بهش نخورون. بسته‌بندی یا نمونه‌ی ماده رو نگه دار و فوراً با دامپزشک تماس بگیر.', en:'Don\'t force anything into it. Keep the packaging or a sample and call the vet immediately.'}},
+  {label:{fa:'تشنج', en:'Seizure'}, answer:{fa:'اطرافش رو از اشیای خطرناک خالی کن، حین تشنج بهش دست نزن، و بلافاصله بعد از تمام شدن ببرش دامپزشک.', en:'Clear dangerous objects nearby, don\'t touch it during the seizure, and get it to a vet right after.'}},
+  {label:{fa:'گرمازدگی (نفس‌نفس شدید، ضعف در گرما)', en:'Heatstroke (heavy panting, weakness in heat)'}, answer:{fa:'ببرش جای خنک و سایه، آب خنک (نه یخ) در دسترسش بذار و فوراً به دامپزشک مراجعه کن.', en:'Move it to a cool, shaded spot, offer cool (not icy) water, and get to a vet immediately.'}}
+];
+function renderEmergency(){
+  const grid = document.getElementById('emGrid'); grid.innerHTML='';
+  emergencies.forEach(e=>{
+    const el = document.createElement('div'); el.className='em-btn'; el.tabIndex=0; el.textContent=t(e.label);
+    el.onclick=()=>{ const a=document.getElementById('emAnswer'); a.textContent=t(e.answer); a.classList.add('show'); };
+    grid.appendChild(el);
+  });
+}
+
+/* ================= BUY GUIDE ================= */
+const buyItems = [
+  {h:{fa:'🦴 قلاده و بند مناسب سایز', en:'🦴 A properly sized collar and leash'}, p:{fa:'قلاده‌ی خیلی تنگ یا شل، هم آزاردهنده‌ست هم خطرناک؛ باید دو انگشت زیرش جا بشه.', en:'A collar that\'s too tight or loose is uncomfortable and unsafe; two fingers should fit underneath.'}},
+  {h:{fa:'🍽️ ظرف استیل به‌جای پلاستیکی', en:'🍽️ Steel bowls instead of plastic'}, p:{fa:'ظرف پلاستیکی می‌تونه باعث آکنه یا حساسیت پوستی روی چونه‌ی گربه بشه.', en:'Plastic bowls can cause acne or skin irritation on a cat\'s chin.'}},
+  {h:{fa:'📦 باکس خاک مناسب گربه', en:'📦 A properly sized litter box'}, p:{fa:'به تعداد گربه‌ها به‌علاوه یکی، و در جای آروم و دور از رفت‌وآمد زیاد قرارش بده.', en:'One box per cat plus one extra, placed somewhere calm and low-traffic.'}},
+  {h:{fa:'🧸 اسباب‌بازی تعاملی', en:'🧸 Interactive toys'}, p:{fa:'کاهش استرس و کسالت، مخصوصاً برای حیواناتی که تنها می‌مونن، خیلی مهمه.', en:'Crucial for reducing stress and boredom, especially for pets left alone.'}},
+  {h:{fa:'🧳 کریر مناسب برای سفر و دامپزشک', en:'🧳 A proper carrier for travel and vet visits'}, p:{fa:'حیوون رو از قبل با کریر آشنا کن تا فقط با موقعیت‌های استرس‌زا مرتبطش نکنه.', en:'Get your pet used to the carrier early, so it doesn\'t only associate it with stress.'}},
+  {h:{fa:'💉 برنامه‌ی واکسیناسیون رو با دامپزشک هماهنگ کن', en:'💉 Plan vaccinations with a vet'}, p:{fa:'زمان‌بندی دقیق واکسن‌ها به سن، نژاد و شرایط بستگی داره — این تصمیم رو به دامپزشک بسپار.', en:'The exact schedule depends on age, breed, and circumstances — leave this decision to a vet.'}}
+];
+function renderBuy(){
+  const grid = document.getElementById('buyGrid'); grid.innerHTML='';
+  buyItems.forEach(b=>{
+    const el=document.createElement('div'); el.className='buy-card';
+    el.innerHTML=`<h4>${t(b.h)}</h4><p>${t(b.p)}</p>`;
+    grid.appendChild(el);
+  });
+}
+
+/* ================= THEME & LANG ================= */
+function applyTheme(theme){
+  document.documentElement.setAttribute('data-theme', theme);
+  ['themeBtn','themeBtnM'].forEach(id=>document.getElementById(id).textContent = theme==='dark' ? '☀️' : '🌙');
+  localStorage.setItem('panjeyar-theme', theme);
+}
+function toggleTheme(){
+  const cur = document.documentElement.getAttribute('data-theme') || 'light';
+  applyTheme(cur==='dark' ? 'light' : 'dark');
+}
+function toggleLang(){
+  LANG = LANG==='fa' ? 'en' : 'fa';
+  localStorage.setItem('panjeyar-lang', LANG);
+  renderAll();
+}
+function renderAll(){
+  renderStaticText();
+  renderNav();
+  renderBento();
+  renderTip();
+  renderSymptoms();
+  document.getElementById('diagResult').classList.remove('show');
+  const activeSp = document.querySelector('.spbtn.active');
+  renderBreeds(activeSp ? activeSp.dataset.sp : 'all');
+  document.querySelectorAll('.breed').forEach(e=>e.classList.remove('open'));
+  renderQuiz();
+  matchStep=0; matchAnswers.species=null; matchAnswers.time=null; matchAnswers.space=null;
+  renderMatchStep();
+  renderEmergency();
+  document.getElementById('emAnswer').classList.remove('show');
+  renderBuy();
+}
+
+(function init(){
+  applyTheme(localStorage.getItem('panjeyar-theme') || 'light');
+  renderAll();
+  switchTab('home');
+})();
+</script>
+</body>
+</html>
